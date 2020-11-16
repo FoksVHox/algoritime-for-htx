@@ -1,8 +1,11 @@
 package main
 
-import "fmt"
-import "./generator"
+import (
+	"fmt"
+	"github.com/FoksVHox/algoritime-for-htx/generator"
+)
 
 func main() {
 	fmt.Println("Calling Generator")
+	generator.Start()
 }

@@ -1,7 +1,7 @@
-package main
+package generator
 
 import "fmt"
 
-func main() {
+func Start() {
 	fmt.Println("Called")
 }
