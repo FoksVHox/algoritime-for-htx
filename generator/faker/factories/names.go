@@ -10,7 +10,7 @@ import (
 var lastnames []string
 var firstnames []string
 
-func Get() string {
+func Generate() string {
 	firstNamesFile, fnerr := ioutil.ReadFile("data/first-names.txt")
 	lastNamesFile, lnerr := ioutil.ReadFile("data/last-names.txt")
 	if fnerr != nil {
