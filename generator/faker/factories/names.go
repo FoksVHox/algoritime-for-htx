@@ -1,16 +1,16 @@
 package names
 
 import (
-	"fmt"
+	"github.com/alok87/goutils/pkg/random"
 	"io/ioutil"
 	"log"
 	"strings"
 )
 
-func Get() []string {
-	var a []string
+var lastnames []string
+var firstnames []string
 
-	// Read the files names
+func Get() string {
 	firstNamesFile, fnerr := ioutil.ReadFile("data/first-names.txt")
 	lastNamesFile, lnerr := ioutil.ReadFile("data/last-names.txt")
 	if fnerr != nil {
@@ -20,17 +20,19 @@ func Get() []string {
 		log.Fatal(lnerr)
 	}
 
-	firstNames := fileExtract(string(firstNamesFile))
-	for _, name := range firstNames {
-		fmt.Println("New name: " + name + " has been registered")
-	}
+	firstnames := fileExtract(string(firstNamesFile))
+	//for _, name := range firstnames {
+	//	fmt.Println("New name: " + name + " has been registered")
+	//}
 
-	lastNames := fileExtract(string(lastNamesFile))
-	for _, name := range lastNames {
-		fmt.Println("New name: " + name + " has been registered")
-	}
+	lastnames := fileExtract(string(lastNamesFile))
+	//for _, name := range lastnames {
+	//	fmt.Println("New lastname: " + name + " has been registered")
+	//}
 
-	return a
+	var name string
+	name = firstnames[random.RangeInt(0, len(firstnames)-1, 1)[0]] + " " + lastnames[random.RangeInt(0, len(lastnames)-1, 1)[0]]
+	return name
 }
 
 func fileExtract(content string) []string {

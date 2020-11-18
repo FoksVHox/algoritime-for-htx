@@ -1,7 +1,11 @@
 package faker
 
-import "github.com/FoksVHox/algoritime-for-htx/generator/faker/factories"
+import (
+	"fmt"
+	"github.com/FoksVHox/algoritime-for-htx/generator/faker/factories"
+)
 
 func GetNames() {
-	names.Get()
+	fmt.Println(names.Get())
+	//GetNames()
 }
