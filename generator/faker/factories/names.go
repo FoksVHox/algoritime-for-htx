@@ -30,9 +30,7 @@ func Generate() string {
 	//	fmt.Println("New lastname: " + name + " has been registered")
 	//}
 
-	var name string
-	name = firstnames[random.RangeInt(0, len(firstnames)-1, 1)[0]] + " " + lastnames[random.RangeInt(0, len(lastnames)-1, 1)[0]]
-	return name
+	return firstnames[random.RangeInt(0, len(firstnames)-1, 1)[0]] + " " + lastnames[random.RangeInt(0, len(lastnames)-1, 1)[0]]
 }
 
 func fileExtract(content string) []string {

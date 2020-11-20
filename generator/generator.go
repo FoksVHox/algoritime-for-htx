@@ -7,13 +7,13 @@ import (
 
 func Start() {
 	fmt.Println("Called")
-	people(5)
+	People(5)
 }
 
-func people(amount int) {
-	var people string = ""
+func People(amount int) []string {
+	var people []string
 	for i := 0; i < amount; i++ {
-		people += faker.GetNames() + ","
+		people = append(people, faker.GetNames())
 	}
-	fmt.Println(people)
+	return people
 }
