@@ -31,6 +31,12 @@ type User struct {
 	Name string `json:"name"`
 }
 
+type Friend struct {
+	ID       int `json:"id"`
+	UserID   int `json:"user_id"`
+	FriendID int `json:"friend_id"`
+}
+
 func algorithm() {
 	var person = generator.People(1)[0]
 	connector.CreateUser("INSERT INTO users (name) VALUES ('"+person+"');", db)
@@ -47,20 +53,13 @@ func algorithm() {
 		// and then print out the tag's Name attribute
 		var friends = connector.GetFriends(db, user.ID)
 
-		if checkCount(friends) != 0 {
-			fmt.Println("here")
-		} else {
-			for i := 0; i < checkCount(friends); i++ {
-				var friend User
-				err := friends.Scan(&friend.ID, &friend.Name)
-				if err != nil {
-					panic(err.Error())
-				}
-				fmt.Println(friend)
+		for friends.Next() {
+			var friend Friend
+			err := friends.Scan(&friend.ID, &friend.UserID, &friend.FriendID)
+			if err != nil {
+				panic(err.Error())
 			}
-
-			//random.RangeInt(0, checkCount(friends)-1, 1)[0]
-			//connector.AddFriend(user.ID, friends[].ID, db)
+			fmt.Println(friend)
 		}
 	}
 
